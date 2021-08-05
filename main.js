@@ -12,16 +12,18 @@ const likes = document.querySelectorAll('.like-glyph')
     })
   }
 
-
-
 function addLike(event) {
   targetHeart = event.target;
   console.log(targetHeart)
 
   mimicServerCall()
     .then(function (response) {
-      targetHeart.classList.add('activated-heart')
-      targetHeart.innerHTML = FULL_HEART;
+      if (targetHeart.innerHTML === EMPTY_HEART) {
+      targetHeart.innerHTML = FULL_HEART
+      targetHeart.classList.add('activated-heart')}
+      else {
+      targetHeart.innerHTML = EMPTY_HEART
+      targetHeart.classList.remove('activated-heart')}
     })
     .catch(function (error) {
       document.querySelector('#modal').classList.remove('hidden')
