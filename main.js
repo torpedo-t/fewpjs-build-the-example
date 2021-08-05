@@ -15,8 +15,8 @@ const likes = document.querySelectorAll('.like-glyph')
 
 
 function addLike(event) {
-  targetHeart = event.target.innerHTML;
-  // console.log(targetHeart)
+  targetHeart = event.target;
+  console.log(targetHeart)
 
   mimicServerCall()
     .then(function (response) {
@@ -27,7 +27,7 @@ function addLike(event) {
       document.querySelector('#modal').classList.remove('hidden')
       setTimeout(function () {
         document.querySelector('#modal').classList.add('hidden')
-      }, 5000)
+      }, 3000)
     });
 }
 
